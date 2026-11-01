@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Customer dashboard — Easy Hire</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="app-body">
+    <header class="app-header">
+        <a class="brand" href="index.html">
+            <span class="brand-mark">E</span>
+            <span>easy<span class="gold">hire</span><small>LOCAL SKILL MARKETPLACE</small></span>
+        </a>
+        <nav class="nav-links">
+            <a class="active" href="customer-dashboard.html">Discover</a>
+            <a href="services.html">Find a pro</a>
+            <a href="my-bookings.html">My bookings</a>
+            <a href="messages.html">Messages</a>
+            <a href="#" onclick="logout(); return false;">Log out ↗</a>
+        </nav>
+    </header>
+
+    <main class="dashboard-wrap">
+        <section class="dash-welcome">
+            <div>
+                <span class="eyebrow">YOUR LOCAL SERVICE DESK</span>
+                <h1>Make room for <em>better.</em></h1>
+                <p>Find the right professional for your next task.</p>
+            </div>
+            <div class="welcome-mark">EH<span>01 / CUSTOMER</span></div>
+        </section>
+
+        <section class="dashboard-search-panel">
+            <form class="dashboard-search-form" onsubmit="dashboardSearch(event)">
+                <span>⌕</span>
+                <input id="dashboardSearch" placeholder="Search electrician, plumbing, painting, AC repair…" aria-label="Search service">
+                <button class="btn btn-gold" type="submit">Search pros ↗</button>
+            </form>
+            <div class="quick-links">
+                <a href="my-bookings.html">▣ <span>My bookings</span></a>
+                <a href="messages.html">✉ <span>Conversations</span></a>
+                <a href="services.html">✳ <span>Browse all services</span></a>
+            </div>
+        </section>
+
+        <section class="dashboard-section" id="dashboardServices">
+            <div class="section-heading compact">
+                <div>
+                    <span class="eyebrow">START WITH A CATEGORY</span>
+                    <h2>What needs <em>doing?</em></h2>
+                </div>
+            </div>
+            <div class="service-grid service-grid-dashboard">
+                <button class="service-tile" onclick="searchDashboardService('Electrical')">
+                    <span class="service-symbol">ϟ</span>
+                    <span><b>Electrical</b><small>Wiring & installations</small></span>
+                    <span class="tile-arrow">↗</span>
+                </button>
+                <button class="service-tile" onclick="searchDashboardService('Plumbing')">
+                    <span class="service-symbol">⌁</span>
+                    <span><b>Plumbing</b><small>Leaks & fittings</small></span>
+                    <span class="tile-arrow">↗</span>
+                </button>
+                <button class="service-tile" onclick="searchDashboardService('Home Cleaning')">
+                    <span class="service-symbol">✦</span>
+                    <span><b>Cleaning</b><small>Deep cleaning & hygiene</small></span>
+                    <span class="tile-arrow">↗</span>
+                </button>
+                <button class="service-tile" onclick="searchDashboardService('AC Repair')">
+                    <span class="service-symbol">❄</span>
+                    <span><b>AC Repair</b><small>Cooling service & gas</small></span>
+                    <span class="tile-arrow">↗</span>
+                </button>
+                <button class="service-tile" onclick="searchDashboardService('Carpentry')">
+                    <span class="service-symbol">⌘</span>
+                    <span><b>Carpentry</b><small>Repairs & custom wood</small></span>
+                    <span class="tile-arrow">↗</span>
+                </button>
+                <button class="service-tile" onclick="searchDashboardService('Painting')">
+                    <span class="service-symbol">◒</span>
+                    <span><b>Painting</b><small>Refresh your space</small></span>
+                    <span class="tile-arrow">↗</span>
+                </button>
+            </div>
+        </section>
+
+        <section class="dashboard-section">
+            <div class="section-heading compact">
+                <div>
+                    <span class="eyebrow" id="dashSectionEyebrow">A GOOD PLACE TO START</span>
+                    <h2 id="dashSectionHeading">Recommended <em>for you.</em></h2>
+                </div>
+                <a class="text-button" id="dashExploreLink" href="services.html">Explore all ↗</a>
+            </div>
+            <div class="level-filters" style="display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap;align-items:center">
+                <span style="font-size:0.75rem;font-weight:800;color:var(--mute);letter-spacing:1px">FILTER IN LEVELS:</span>
+                <select id="dashStateSelect" class="filter-select" onchange="onDashStateChange(this.value)" aria-label="Level 1 State">
+                    <option value="">Level 1: All States</option>
+                </select>
+                <select id="dashDistrictSelect" class="filter-select" onchange="onDashDistrictChange(this.value)" aria-label="Level 2 District">
+                    <option value="">Level 2: All Districts</option>
+                </select>
+                <select id="dashAreaSelect" class="filter-select" onchange="onDashAreaChange(this.value)" aria-label="Level 3 Area">
+                    <option value="">Level 3: All Areas</option>
+                </select>
+                <button type="button" class="btn sm ghost" onclick="resetDashLocationFilters()" style="padding:5px 14px;font-size:0.8rem">Reset</button>
+            </div>
+            <div class="filter-row" id="dashboardAreaFilterRow" style="margin-bottom:18px">
+                <div class="filter-tabs" id="dashboardAreaTabs">
+                    <button type="button" class="filter-tab active" onclick="selectDashboardArea('', this)">All Areas</button>
+                </div>
+            </div>
+            <div class="provider-grid" id="dashboardProviders">
+                <p class="empty-state" style="grid-column:1/-1">Loading professionals from database...</p>
+            </div>
+            <p class="empty-state hidden" id="dashboardEmpty">No providers match that search. Try a different service or area.</p>
+        </section>
+
+        <section class="dashboard-bottom">
+            <div>
+                <span class="eyebrow">KEEP EVERYTHING TOGETHER</span>
+                <h2>Your plans,<br><em>in one place.</em></h2>
+                <p>Check requests, pick up conversations and leave a review after a completed service.</p>
+            </div>
+            <div class="bottom-actions">
+                <a class="btn btn-dark" href="my-bookings.html">View my bookings ↗</a>
+                <a class="btn btn-outline-dark" href="messages.html">Open messages ↗</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="simple-footer">© 2026 Easy Hire · Local services, thoughtfully connected.</footer>
+    <script src="js/script.js"></script>
+</body>
+</html>

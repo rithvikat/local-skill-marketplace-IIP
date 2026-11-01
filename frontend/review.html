@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Leave a review — Easy Hire</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="app-body">
+    <header class="app-header">
+        <a class="brand" href="index.html">
+            <span class="brand-mark">E</span>
+            <span>easy<span class="gold">hire</span><small>LOCAL SKILL MARKETPLACE</small></span>
+        </a>
+        <nav class="nav-links">
+            <a href="customer-dashboard.html">Discover</a>
+            <a href="services.html">Find a pro</a>
+            <a class="active" href="my-bookings.html">My bookings</a>
+            <a href="messages.html">Messages</a>
+            <a href="#" onclick="logout(); return false;">Log out ↗</a>
+        </nav>
+    </header>
+
+    <main class="review-layout">
+        <div class="review-intro">
+            <span class="eyebrow">A LITTLE FEEDBACK GOES A LONG WAY</span>
+            <h1>Make good work<br><em>count.</em></h1>
+            <p>Your honest review helps local professionals build a reputation and helps the next customer make a confident choice.</p>
+            <a class="back-link" href="my-bookings.html">← Back to my bookings</a>
+        </div>
+
+        <section class="review-form-card">
+            <div class="review-provider">
+                <div class="pro-avatar" id="reviewPhoto">EH</div>
+                <div>
+                    <span class="eyebrow">YOU'RE REVIEWING</span>
+                    <h2 id="reviewProviderName">Loading provider...</h2>
+                    <p id="reviewProviderService">Loading booking details...</p>
+                </div>
+            </div>
+
+            <form onsubmit="submitReview(event)" class="form-stack">
+                <label>How was your experience?</label>
+                <div class="rating-picker">
+                    <input type="radio" name="rating" id="star5" value="5" required>
+                    <label for="star5" title="5 stars">★</label>
+                    <input type="radio" name="rating" id="star4" value="4">
+                    <label for="star4" title="4 stars">★</label>
+                    <input type="radio" name="rating" id="star3" value="3">
+                    <label for="star3" title="3 stars">★</label>
+                    <input type="radio" name="rating" id="star2" value="2">
+                    <label for="star2" title="2 stars">★</label>
+                    <input type="radio" name="rating" id="star1" value="1">
+                    <label for="star1" title="1 star">★</label>
+                </div>
+
+                <label for="reviewText">Your review</label>
+                <textarea id="reviewText" rows="5" minlength="8" placeholder="What stood out? Was the work completed well and on time?" required></textarea>
+
+                <button class="btn btn-gold btn-full" type="submit">Publish review ↗</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="simple-footer">© 2026 Easy Hire · Local services, thoughtfully connected.</footer>
+    <script src="js/script.js"></script>
+</body>
+</html>

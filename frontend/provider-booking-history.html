@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Booking history — Easy Hire</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="app-body">
+    <header class="app-header">
+        <a class="brand" href="index.html">
+            <span class="brand-mark">E</span>
+            <span>easy<span class="gold">hire</span><small>PROFESSIONAL STUDIO</small></span>
+        </a>
+        <nav class="nav-links">
+            <a href="provider-dashboard.html">Overview</a>
+            <a href="booking-requests.html">Requests</a>
+            <a class="active" href="provider-booking-history.html">History</a>
+            <a href="provider-profile.html">Profile</a>
+            <a href="messages.html">Messages</a>
+            <a href="#" onclick="logout(); return false;">Log out ↗</a>
+        </nav>
+    </header>
+
+    <main class="list-page">
+        <div class="page-heading-row">
+            <div>
+                <span class="eyebrow">YOUR WORK, ALL IN ONE PLACE</span>
+                <h1>Booking <em>history.</em></h1>
+                <p>Track your accepted, completed and declined jobs from MongoDB Atlas.</p>
+            </div>
+            <a class="btn btn-gold" href="booking-requests.html">Review requests ↗</a>
+        </div>
+
+        <div class="stats-strip" id="historyStats">
+            <div><span>TOTAL</span><b id="historyAll">0</b></div>
+            <div><span>COMPLETED</span><b id="historyCompleted">0</b></div>
+            <div><span>DECLINED</span><b id="historyRejected">0</b></div>
+            <div><span>ACCEPTED</span><b id="historyAccepted">0</b></div>
+        </div>
+
+        <div class="booking-list" id="providerHistoryContainer">
+            <p class="muted">Loading booking history from database...</p>
+        </div>
+
+        <div class="empty-panel hidden" id="historyEmpty">
+            <span class="empty-icon">▣</span>
+            <h2>Your history starts here</h2>
+            <p>Requests you accept or complete will appear here.</p>
+        </div>
+    </main>
+
+    <footer class="simple-footer">© 2026 Easy Hire · Your skills, seen locally.</footer>
+    <script src="js/script.js"></script>
+</body>
+</html>

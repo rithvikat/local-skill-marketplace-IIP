@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Booking requests — Easy Hire</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="app-body">
+    <header class="app-header">
+        <a class="brand" href="index.html">
+            <span class="brand-mark">E</span>
+            <span>easy<span class="gold">hire</span><small>PROFESSIONAL STUDIO</small></span>
+        </a>
+        <nav class="nav-links">
+            <a href="provider-dashboard.html">Overview</a>
+            <a class="active" href="booking-requests.html">Requests</a>
+            <a href="provider-booking-history.html">History</a>
+            <a href="provider-profile.html">Profile</a>
+            <a href="messages.html">Messages</a>
+            <a href="#" onclick="logout(); return false;">Log out ↗</a>
+        </nav>
+    </header>
+
+    <main class="list-page">
+        <div class="page-heading-row">
+            <div>
+                <span class="eyebrow">YOUR NEXT OPPORTUNITY</span>
+                <h1>Booking <em>requests.</em></h1>
+                <p>Review customer details, address, service needed, and accept or decline.</p>
+            </div>
+            <a class="btn btn-outline-dark" href="provider-dashboard.html">← Dashboard</a>
+        </div>
+
+        <div class="filter-row">
+            <div class="filter-tabs" id="requestFilters">
+                <button class="filter-tab active" data-filter="Pending">Pending</button>
+                <button class="filter-tab" data-filter="Accepted">Accepted</button>
+                <button class="filter-tab" data-filter="All">All requests</button>
+            </div>
+            <span class="muted" id="requestResultCount">0 requests</span>
+        </div>
+
+        <div class="request-list" id="providerRequestsContainer">
+            <p class="muted">Loading booking requests from database...</p>
+        </div>
+
+        <div class="empty-panel hidden" id="requestsEmpty">
+            <span class="empty-icon">✳</span>
+            <h2>All caught up</h2>
+            <p>New customer requests will appear here in real-time.</p>
+        </div>
+    </main>
+
+    <footer class="simple-footer">© 2026 Easy Hire · Your skills, seen locally.</footer>
+    <script src="js/script.js"></script>
+</body>
+</html>
